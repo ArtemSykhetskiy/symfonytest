@@ -2,7 +2,7 @@
 {% block body %}
 
     <div class="container" style="margin-top: 50px">
-        {{ form_start(form, {'action': path('admin.update.products'), 'method': 'POST'}) }}
+        {{ form_start(form) }}
 
         {{ form_row(form.Title) }}
         {{ form_row(form.Price) }}
