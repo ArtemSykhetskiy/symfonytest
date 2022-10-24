@@ -56,7 +56,6 @@ class ProductController extends AbstractController
     #[Route('/products/edit/{id}', name: 'admin.edit.products')]
     public function edit(Request $request, Product $product, ManagerRegistry $doctrine): Response
     {
-        $entityManager = $doctrine->getManager();
         $form = $this->createForm(ProductFormType::class, $product);
 
         $form->handleRequest($request);
