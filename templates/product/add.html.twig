@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <div class="container" style="margin-top: 50px">
+        {{ form_start(form, {'action': path('admin.store.products'), 'method': 'POST'}) }}
+
+        {{ form_row(form.Title) }}
+        {{ form_row(form.Price) }}
+        {{ form_row(form.SKU) }}
+        {{ form_row(form.Description) }}
+
+        <input type="submit" value="send">
+
+        {{ form_end(form) }}
+    </div>
+
+
+{% endblock body %}

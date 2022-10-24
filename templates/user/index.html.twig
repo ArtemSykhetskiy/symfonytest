@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <table class="table table-striped" style="margin-top: 100px">
+
+            <tbody>
+
+                <tr>
+                    <td>Name:</td>
+                    <td>{{ app.user.name }}</td>
+                </tr>
+                <tr>
+                    <td>Surname:</td>
+                    <td>{{ app.user.surname }}</td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td>{{ app.user.email }}</td>
+                </tr>
+                <tr>
+                    <td>Adress:</td>
+                    <td>{{ app.user.adress }}</td>
+                </tr>
+
+            </tbody>
+
+
+
+        </table>
+        <a class="btn btn-success" href="{{ path('main.profile.edit') }}">Edit</a>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <table class="table table-striped" style="margin-top: 100px">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+                <th scope="col">SKU</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+            <tr>
+                <th scope="row">{{ product.id }}</th>
+                <td>{{ product.Title }}</td>
+                <td>{{ product.Price }}</td>
+                <td>{{ product.Description }}</td>
+                <td>{{ product.SKU }}</td>
+                <td>
+                    <button type="button" class="btn btn-success">Edit</button>
+                    <button type="button" class="btn btn-danger">Remove</button>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+
+{% endblock %}
