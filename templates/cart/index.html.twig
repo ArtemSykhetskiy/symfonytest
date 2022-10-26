@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        {% if(cart) %}
+            <table class="table table-striped" style="margin-top: 100px">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for cartProduct in cart.cartProducts %}
+                    {% set product = cartProduct.product %}
+                    <tr>
+                        <th scope="row">{{ product.id }}</th>
+                        <td><a href="{{ path('product.show', {'id': product.id}) }}">{{ product.title }}</a></td>
+                        <td>{{ product.price }}</td>
+                        <td>{{ cartProduct.quantity * product.price}}</td>
+                        <td>{{ product.price }}</td>
+
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+
+            <a href="{{ path('cart.create') }}">Proceed order</a>
+        {% endif %}
+    </div>
+
+{% endblock %}

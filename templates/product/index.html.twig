@@ -13,6 +13,7 @@
                 <th scope="col">Price</th>
                 <th scope="col">Description</th>
                 <th scope="col">SKU</th>
+                <th scope="col">Photo</th>
                 <th scope="col">Actions</th>
             </tr>
             </thead>
@@ -24,6 +25,13 @@
                 <td>{{ product.Price }}</td>
                 <td>{{ product.Description }}</td>
                 <td>{{ product.SKU }}</td>
+                <td>
+                    {% set images = product.getProductImages().getValues() %}
+                        {% if images|length  %}
+                            {% set image = images[0] %}
+                                <img src="{{ asset('uploads/temp/' ~ image.filenameMiddle) }}" width="100px">
+                        {% endif %}
+                </td>
                 <td>
                     <a href="{{ path('admin.edit.products', {'id': product.id}) }}"><button type="button" class="btn btn-success">Edit</button></a>
                    <a href="{{ path('admin.remove.products', {'id': product.id}) }}"> <button type="button" class="btn btn-danger">Remove</button></a>
