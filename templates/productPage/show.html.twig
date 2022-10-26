@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <ul>
+                <li>Title - {{ product.title }}</li>
+                <li>Price - {{ product.price }}</li>
+                <li>SKU - {{ product.SKU }}</li>
+                <li>Description - {{ product.description }}</li>
+                <li>Image -  {% set images = product.getProductImages().getValues() %}
+                    {% if images|length  %}
+                        {% set image = images[0] %}
+                        <img src="{{ asset('uploads/temp/' ~ image.filenameMiddle) }}" width="100px">
+                    {% endif %}</li>
+                <li> <a href="{{ path('cart.save', {'id': product.id}) }}"><button type="button" class="btn btn-success">Add to Cart</button></a></li>
+            </ul>
+        </div>
+
+    </div>
+
+{% endblock %}
