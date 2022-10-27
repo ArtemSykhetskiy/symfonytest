@@ -32,8 +32,8 @@ class Order
     #[ORM\Column]
     private ?\DateTimeImmutable $changedAt = null;
 
-    #[ORM\Column]
-    private ?bool $is_deleted = null;
+    #[ORM\Column (nullable: true)]
+    private ?bool $is_deleted = false;
 
     #[ORM\OneToMany(mappedBy: 'appOrder', targetEntity: OrderProduct::class)]
     private Collection $orderProducts;
