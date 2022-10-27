@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Cart;
 use App\Entity\CartProduct;
+use App\Entity\User;
 use App\Repository\CartProductRepository;
 use App\Repository\CartRepository;
 use App\Repository\ProductRepository;
@@ -47,8 +48,9 @@ class CartController extends AbstractController
     public function create(Request $request, OrderManager $orderManager)
     {
         $sessionId = $request->cookies->get('PHPSESSID');
-        $orderManager->createOrderFromCartBySessionId($sessionId);
+        $user = $this->getUser();
+        $orderManager->createOrderFromCartBySessionId($sessionId, $user);
 
-
+        return $this->redirectToRoute('cart');
     }
 }
